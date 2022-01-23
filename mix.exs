@@ -7,7 +7,23 @@ defmodule PersonalInfo.Umbrella.MixProject do
       version: "0.1.0",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      aliases: aliases()
+      aliases: aliases(),
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.html": :test,
+        "coveralls.lcov": :test,
+        "coveralls.xml": :test,
+        "coveralls.json": :test
+      ],
+      source_url: "https://github.com/jmhossler/jmhossler.net",
+      test_coverage: [tool: ExCoveralls, output: "cover"],
+      elixirc_options: [
+        warnings_as_errors: true
+      ],
+      dialyzer: [
+        plt_file: {:no_warn, "priv/dialyzer.plt"},
+        flags: [:unknown, :unmatched_returns, :error_handling, :race_conditions, :no_opaque]
+      ]
     ]
   end
 

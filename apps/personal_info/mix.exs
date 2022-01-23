@@ -1,7 +1,10 @@
 defmodule PersonalInfo.MixProject do
   use Mix.Project
+  Code.require_file("../../shared_deps.exs", __DIR__)
+  Code.require_file("../../shared_config.exs", __DIR__)
 
   def project do
+    PersonalInfo.Umbrella.SharedConfig.config() ++
     [
       app: :personal_info,
       version: "0.1.0",
@@ -9,7 +12,7 @@ defmodule PersonalInfo.MixProject do
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
-      elixir: "~> 1.12",
+      elixir: "~> 1.13",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -35,6 +38,7 @@ defmodule PersonalInfo.MixProject do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
+    PersonalInfo.Umbrella.SharedDeps.deps() ++
     [
       {:phoenix_pubsub, "~> 2.0"},
       {:ecto_sql, "~> 3.6"},
