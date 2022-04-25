@@ -11,7 +11,7 @@ import Config
 # before starting your production server.
 config :personal_info_web, PersonalInfoWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json",
-  check_organ: ["//example.com", "//localhost"]
+  check_origin: ["//twitch.jmhossler.net", "//localhost"]
 
 
 # ## SSL Support

@@ -19,7 +19,36 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
+  external_protocol =
+    System.get_env("EXTERNAL_PROTOCOL") ||
+      raise """
+      environment variable EXTERNAL_PROTOCOL is missing.
+      Example: http or https
+      """
+
+  external_port =
+    System.get_env("EXTERNAL_PORT") ||
+      raise """
+      environment variable EXTERNAL_PORT is missing.
+      Example: 80 or 443
+      """
+
+  external_hostname =
+    System.get_env("EXTERNAL_HOSTNAME") ||
+      raise """
+      environment variable EXTERNAL_HOSTNAME is missing.
+      Example: stillhouse.tangotango.io
+      """
+
   config :personal_info_web, PersonalInfoWeb.Endpoint,
+    url: [
+      host: external_hostname,
+      port: String.to_integer(external_port),
+      scheme: external_protocol
+    ],
+    check_origin: [
+      "#{external_protocol}://#{external_hostname}:#{external_port}"
+    ],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
