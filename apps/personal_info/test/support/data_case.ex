@@ -18,18 +18,11 @@ defmodule PersonalInfo.DataCase do
 
   using do
     quote do
-      alias PersonalInfo.Repo
-
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
       import PersonalInfo.DataCase
     end
   end
 
-  setup tags do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(PersonalInfo.Repo, shared: not tags[:async])
-    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+  setup _tags do
     :ok
   end
 

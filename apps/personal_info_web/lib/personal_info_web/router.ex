@@ -17,7 +17,7 @@ defmodule PersonalInfoWeb.Router do
   scope "/", PersonalInfoWeb do
     pipe_through :browser
 
-    live "/", Live.AboutMe
+    live "/", Live.Home
   end
 
   # Other scopes may use custom stacks.

@@ -9,10 +9,6 @@
 # move said applications out of the umbrella.
 import Config
 
-# Configure Mix tasks and generators
-config :personal_info,
-  ecto_repos: [PersonalInfo.Repo]
-
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
@@ -26,7 +22,6 @@ config :personal_info, PersonalInfo.Mailer, adapter: Swoosh.Adapters.Local
 config :swoosh, :api_client, false
 
 config :personal_info_web,
-  ecto_repos: [PersonalInfo.Repo],
   generators: [context_app: :personal_info]
 
 # Configures the endpoint

@@ -10,8 +10,9 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :personal_info_web, PersonalInfoWeb.Endpoint,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  check_organ: ["//example.com", "//localhost"]
+
 
 # ## SSL Support
 #

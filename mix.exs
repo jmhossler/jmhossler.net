@@ -15,6 +15,13 @@ defmodule PersonalInfo.Umbrella.MixProject do
         "coveralls.xml": :test,
         "coveralls.json": :test
       ],
+      releases: [
+        server: [
+          applications: [personal_info: :permanent, personal_info_web: :permanent],
+          strip_beams: false,
+          include_executables_for: [:unix]
+        ]
+      ],
       source_url: "https://github.com/jmhossler/jmhossler.net",
       test_coverage: [tool: ExCoveralls, output: "cover"],
       elixirc_options: [

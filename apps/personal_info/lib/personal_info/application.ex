@@ -8,8 +8,6 @@ defmodule PersonalInfo.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      PersonalInfo.Repo,
       # Start the PubSub system
       {Phoenix.PubSub, name: PersonalInfo.PubSub}
       # Start a worker by calling: PersonalInfo.Worker.start_link(arg)
